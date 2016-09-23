@@ -32,8 +32,13 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  return {
-    session: state.session
+  if (state.session[0].user_email){
+    return {
+      session: state.session
+    }
+  } else {
+    return {
+    }
   }
 };
 
