@@ -28,6 +28,18 @@
   font-weight: 600;
 }
 
+.ScriptLine {
+  margin: 1em 10em;
+  text-align: center;
+  background: beige;
+}
+
 .script-text {
-  background: lightskyblue;
+}
+
+.script-text {
+  margin: 2px
+}
+
+.text-container {
 }
