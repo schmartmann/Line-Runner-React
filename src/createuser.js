@@ -7,17 +7,16 @@ import { bindActionCreators } from 'redux';
 class CreateUser extends Component {
   constructor(props){
     super(props);
+    // this.createUser = this.props.createUser.bind(this);
     this.state = { user_email: "", password: ""};
     this.onInputChangePassword = this.onInputChangePassword.bind(this);
     this.onInputChangeEmail = this.onInputChangeEmail.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
   onInputChangePassword(event) {
-    console.log(event.target.value);
     this.setState({ password: event.target.value});
   }
   onInputChangeEmail(event){
-    console.log(event.target.value);
     this.setState({ user_email: event.target.value});
   }
   onFormSubmit(event) {

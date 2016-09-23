@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import createSession from './actions/index';
 import { bindActionCreators } from 'redux';
+import axios from 'axios';
 
 
 class CreateSession extends Component {
@@ -11,24 +12,32 @@ class CreateSession extends Component {
     this.onInputChangePassword = this.onInputChangePassword.bind(this);
     this.onInputChangeEmail = this.onInputChangeEmail.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    // this.createUser = this.props.createUser.bind(this)
   }
   onInputChangePassword(event) {
-  console.log(event.target.value);
-  this.setState({ password: event.target.value});
+    this.setState({ password: event.target.value});
   }
   onInputChangeEmail(event){
-    console.log(event.target.value);
     this.setState({ user_email: event.target.value});
   }
   onFormSubmit(event) {
     event.preventDefault();
     const email = this.state.user_email;
     const password = this.state.password;
-    this.props.createSession(email, password);
+    // this.props.createUser(email, password);
+    axios.post('http://localhost:3001/sessions/create', {
+      email: email,
+      password: password
+    })
+    .then(function (response){
+      console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
+    });
     this.setState({ user_email: '' });
     this.setState({ password: ''})
   }
-
   render(){
     return(
       <div className="CreateSession">
