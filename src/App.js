@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import UserAuthentication from './userauthentication'
+import LineRunner from './linerunner'
 import './App.css';
 
 class App extends Component {
@@ -7,12 +8,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to LineRunner</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="UserAuthentication">
+          <UserAuthentication/>
+        </div>
+        <div className="LineRunner">
+          <LineRunner/>
+        </div>
       </div>
     );
   }
