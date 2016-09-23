@@ -24,6 +24,7 @@ class App extends Component {
           <h2>Welcome to LineRunner</h2>
         </div>
         <div className="LineRunner">
+          {console.log(this.props.session)}
           <LineRunner/>
         </div>
       </div>

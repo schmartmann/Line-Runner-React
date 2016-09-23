@@ -1,18 +1,60 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import createUser from './actions/index';
+import { bindActionCreators } from 'redux';
+
 
 class CreateUser extends Component {
+  constructor(props){
+    super(props);
+    this.state = { user_email: "", password: ""};
+    this.onInputChangePassword = this.onInputChangePassword.bind(this);
+    this.onInputChangeEmail = this.onInputChangeEmail.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+  onInputChangePassword(event) {
+    console.log(event.target.value);
+    this.setState({ password: event.target.value});
+  }
+  onInputChangeEmail(event){
+    console.log(event.target.value);
+    this.setState({ user_email: event.target.value});
+  }
+  onFormSubmit(event) {
+    event.preventDefault();
+    console.log(this.state)
+    const email = this.state.user_email;
+    const password = this.state.password;
+    this.props.createUser(email, password);
+    this.setState({ user_email: '' });
+    this.setState({ password: ''})
+  }
   render(){
     return(
       <div className="CreateUser">
-        <h3>Create User Account</h3>
-        <form>
-          <input type="text" name="email" value="Enter your email"/><br/>
-          <input type="text" name="password" value="Select password"/><br/>
-          <input type="submit"/>
-        </form>
+      <h3>Create Account</h3>
+      <form onSubmit={this.onFormSubmit}>
+      <input
+        placeholder="Enter your email"
+        value={this.state.user_email}
+        className="form-control"
+        onChange={this.onInputChangeEmail}/><br/>
+      <input
+        placeholder="Enter your password"
+        value={this.state.password}
+        className="form-control"
+        onChange={this.onInputChangePassword}/><br/>
+        <button type="submit">
+        Submit
+      </button>
+      </form>
       </div>
     )
   }
 }
 
-export default CreateUser;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ createUser: createUser}, dispatch)
+}
+
+export default connect(mapDispatchToProps)(CreateUser)

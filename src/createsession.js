@@ -5,21 +5,55 @@ import { bindActionCreators } from 'redux';
 
 
 class CreateSession extends Component {
+  constructor(props){
+    super(props);
+    this.state = { user_email: "", password: ""};
+    this.onInputChangePassword = this.onInputChangePassword.bind(this);
+    this.onInputChangeEmail = this.onInputChangeEmail.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+  onInputChangePassword(event) {
+  console.log(event.target.value);
+  this.setState({ password: event.target.value});
+  }
+  onInputChangeEmail(event){
+    console.log(event.target.value);
+    this.setState({ user_email: event.target.value});
+  }
+  onFormSubmit(event) {
+    event.preventDefault();
+    const email = this.state.user_email;
+    const password = this.state.password;
+    this.props.createSession(email, password);
+    this.setState({ user_email: '' });
+    this.setState({ password: ''})
+  }
+
   render(){
     return(
       <div className="CreateSession">
       <h3>Log In</h3>
-      <form>
-        <input type="text" name="email" value="Enter your email"/><br/>
-        <input type="text" name="password" value="Enter password"/><br/>
-        <input type="submit" onClick={ () => this.props.createSession()}/>
+      <form onSubmit={this.onFormSubmit}>
+      <input
+        placeholder="Enter your email"
+        value={this.state.user_email}
+        className="form-control"
+        onChange={this.onInputChangeEmail}/><br/>
+      <input
+        placeholder="Enter your password"
+        value={this.state.password}
+        className="form-control"
+        onChange={this.onInputChangePassword}/><br/>
+        <button type="submit">
+        Submit
+      </button>
       </form>
       </div>
     )
   }
 }
+
 function mapDispatchToProps(dispatch){
-  //whenever selectBook is called, the result should be passed to all of our reducers
   return bindActionCreators({ createSession: createSession}, dispatch)
 }
 
