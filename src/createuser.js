@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import createUser from './actions/index';
 import { bindActionCreators } from 'redux';
+import axios from 'axios';
 
 
 class CreateUser extends Component {
@@ -24,7 +25,15 @@ class CreateUser extends Component {
     console.log(this.state)
     const email = this.state.user_email;
     const password = this.state.password;
-    this.props.createUser(email, password);
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/users/create',
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
+      params: {
+        email: email,
+        password: password
+      }
+    });
     this.setState({ user_email: '' });
     this.setState({ password: ''})
   }
@@ -55,5 +64,6 @@ class CreateUser extends Component {
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ createUser: createUser}, dispatch)
 }
+
 
 export default connect(mapDispatchToProps)(CreateUser)

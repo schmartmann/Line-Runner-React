@@ -7,7 +7,7 @@ class ScriptLine extends Component {
     return this.props.lines.map((line) => {
       return (
         <div className="text-container">
-          <p className="script-text" key={line.project}>
+          <p className="script-text" key={this.props.id}>
             {line.script_line}
           </p>
         </div>

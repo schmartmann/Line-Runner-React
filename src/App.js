@@ -6,11 +6,12 @@ import './App.css';
 
 class App extends Component {
   render() {
-    if (!this.props.session) {
+    if (!this.props.session[0].user_email) {
       return(
         <div className="App">
           <div className="App-header">
             <h2>Welcome to LineRunner</h2>
+            {console.log(this.props.session)}
           </div>
           <div className="UserAuthentication">
             <UserAuthentication/>
@@ -22,9 +23,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome to LineRunner</h2>
+          {console.log(this.props.user)}
+
         </div>
         <div className="LineRunner">
-          {console.log(this.props.session)}
           <LineRunner/>
         </div>
       </div>
@@ -33,13 +35,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  if (state.session[0].user_email){
-    return {
-      session: state.session
-    }
-  } else {
-    return {
-    }
+  return {
+    session: state.session
   }
 };
 

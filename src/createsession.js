@@ -25,16 +25,17 @@ class CreateSession extends Component {
     const email = this.state.user_email;
     const password = this.state.password;
     // this.props.createUser(email, password);
-    axios.post('http://localhost:3001/sessions/create', {
-      email: email,
-      password: password
-    })
-    .then(function (response){
-      console.log(response);
-    })
-    .catch(function(error){
-      console.log(error);
+    // axios.post('http://localhost:3001/sessions/create')
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/sessions/create',
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
+      params: {
+        email: email,
+        password: password
+      }
     });
+    console.log(this.props.user)
     this.setState({ user_email: '' });
     this.setState({ password: ''})
   }
@@ -66,4 +67,10 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({ createSession: createSession}, dispatch)
 }
 
-export default connect(mapDispatchToProps)(CreateSession)
+function mapStateToProps(state){
+  return {
+    session: state.session
+  }
+};
+
+export default connect(mapDispatchToProps, mapStateToProps)(CreateSession)
