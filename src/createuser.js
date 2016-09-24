@@ -29,11 +29,18 @@ class CreateUser extends Component {
       method: 'post',
       url: 'http://localhost:3001/users/create',
       headers: {'X-Requested-With': 'XMLHttpRequest'},
-      params: {
+      data: {
         email: email,
         password: password
       }
-    });
+    }).then(function(response){
+      if (response.data === "error!"){
+        console.log(response.data)
+      } else {
+        console.log("the following user should have been created");
+        console.log(response.data)
+      }
+    })
     this.setState({ user_email: '' });
     this.setState({ password: ''})
   }

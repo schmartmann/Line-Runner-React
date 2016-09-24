@@ -1,8 +1,8 @@
 export default function(){
   return [
     {
-      user_email: "stefanhartmanN@gmail.cim",
-      project: ["undefined"]
+      user_email: undefined,
+      project: undefined
     }
   ]
 }

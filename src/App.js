@@ -11,7 +11,6 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <h2>Welcome to LineRunner</h2>
-            {console.log(this.props.session)}
           </div>
           <div className="UserAuthentication">
             <UserAuthentication/>
@@ -23,8 +22,6 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome to LineRunner</h2>
-          {console.log(this.props.user)}
-
         </div>
         <div className="LineRunner">
           <LineRunner/>

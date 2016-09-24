@@ -12,7 +12,6 @@ class CreateSession extends Component {
     this.onInputChangePassword = this.onInputChangePassword.bind(this);
     this.onInputChangeEmail = this.onInputChangeEmail.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    // this.createUser = this.props.createUser.bind(this)
   }
   onInputChangePassword(event) {
     this.setState({ password: event.target.value});
@@ -24,18 +23,21 @@ class CreateSession extends Component {
     event.preventDefault();
     const email = this.state.user_email;
     const password = this.state.password;
-    // this.props.createUser(email, password);
-    // axios.post('http://localhost:3001/sessions/create')
     axios({
       method: 'post',
-      url: 'http://localhost:3001/sessions/create',
+      url: `http://localhost:3001/sessions/create`,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
-      params: {
+      data: {
         email: email,
         password: password
       }
-    });
-    console.log(this.props.user)
+    }).then(function(response){
+      if (response.data === "error!"){
+        console.log(response.data)
+      } else {
+        console.log("this should create a session")
+      }
+    })
     this.setState({ user_email: '' });
     this.setState({ password: ''})
   }
@@ -45,18 +47,18 @@ class CreateSession extends Component {
       <h3>Log In</h3>
       <form onSubmit={this.onFormSubmit}>
       <input
-        placeholder="Enter your email"
-        value={this.state.user_email}
-        className="form-control"
+          placeholder="Enter your email"
+          value={this.state.user_email}
+          className="form-control"
         onChange={this.onInputChangeEmail}/><br/>
       <input
-        placeholder="Enter your password"
-        value={this.state.password}
-        className="form-control"
-        onChange={this.onInputChangePassword}/><br/>
+          placeholder="Enter your password"
+          value={this.state.password}
+          className="form-control"
+          onChange={this.onInputChangePassword}/><br/>
         <button type="submit">
-        Submit
-      </button>
+          Submit
+        </button>
       </form>
       </div>
     )
