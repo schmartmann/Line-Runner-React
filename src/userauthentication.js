@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CreateUser from './createuser';
 import CreateSession from './createsession';
+
+function mapStateToProps(state){
+  return {
+    session: state.session
+  }
+};
 
 
 class UserAuthentication extends Component {
@@ -16,6 +23,4 @@ class UserAuthentication extends Component {
     )
   }
 }
-
-
-export default UserAuthentication;
+export default connect(mapStateToProps)(UserAuthentication)

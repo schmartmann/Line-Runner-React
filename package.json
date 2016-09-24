@@ -12,7 +12,10 @@
     "react-dom": "^15.3.2",
     "react-prevent-default": "^1.0.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-easy-forms": "^0.2.0",
+    "redux-form": "^6.0.5",
+    "watson-developer-cloud": "^2.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

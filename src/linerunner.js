@@ -15,7 +15,7 @@ function mapStateToProps(state){
 class LineRunner extends Component {
   constructor(props){
     super(props);
-    this.session = this.props.session[0].user_email;
+    this.session = this.props.user_email;
     this.lines = this.props.lines
   }
   render(){
