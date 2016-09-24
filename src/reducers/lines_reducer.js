@@ -1,5 +1,4 @@
 //create an array of lines
-
 export default function(){
   return [
     {

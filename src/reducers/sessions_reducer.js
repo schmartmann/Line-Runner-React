@@ -1,7 +1,7 @@
 export default function(){
   return [
     {
-      user_email: undefined,
+      user_email: "stefsn",
       project: undefined
     }
   ]

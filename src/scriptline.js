@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
+function mapStateToProps(state){
+  return {
+    session: state.session,
+    lines: state.lines
+  }
+};
 class ScriptLine extends Component {
+  constructor(props){
+    super(props);
+    this.session = this.props.session[0].user_email;
+    this.lines = this.props.lines
+  }
   renderList(){
-    return this.props.lines.map((line) => {
+    return this.lines.map((line) => {
       return (
         <div className="text-container">
-          <p className="script-text" key={this.props.id}>
+          <p className="script-text" key={line.id}>
             {line.script_line}
           </p>
         </div>
@@ -23,11 +33,6 @@ class ScriptLine extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return {
-    lines: state.lines
-  }
-};
 
 
 export default connect(mapStateToProps)(ScriptLine);
