@@ -13,11 +13,14 @@ function mapStateToProps(state){
 class App extends Component {
   constructor(props){
     super(props);
-    this.session = this.props.session.user_email;
-    this.lines = this.props.lines
+    // console.log(props)
+    // console.log("^^^ is the app.js ")
+    // this.session = this.props.session.user_email;
+    // this.lines = this.props.lines
   }
   render() {
-      if (!this.session) {
+      if (!this.props.session.user_email) {
+        console.log(this.props.session.user_email)
         return(
           <div className="App">
             <div className="App-header">
@@ -29,6 +32,7 @@ class App extends Component {
           </div>
         )
       } else {
+        console.log(this.props)
         return (
           <div className="App">
             <div className="App-header">
