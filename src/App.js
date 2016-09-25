@@ -13,10 +13,6 @@ function mapStateToProps(state){
 class App extends Component {
   constructor(props){
     super(props);
-    // console.log(props)
-    // console.log("^^^ is the app.js ")
-    // this.session = this.props.session.user_email;
-    // this.lines = this.props.lines
   }
   render() {
       if (!this.props.session.user_email) {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createSession } from './actions/index';
 import { bindActionCreators } from 'redux';
