@@ -4,7 +4,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 120px;
 }
 
 .App-header {
@@ -28,6 +28,22 @@
   font-weight: 600;
 }
 
-.script-text {
-  background: lightskyblue;
+.ScriptLine {
+  margin: 1em 10em;
+  text-align: center;
+  background: beige;
 }
+
+.script-text {
+}
+
+.script-text {
+  margin: 2px
+}
+
+.text-container {
+}
+
+.alert-hidden {
+  display: none;
+};
