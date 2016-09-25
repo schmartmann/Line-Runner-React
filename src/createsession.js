@@ -29,7 +29,7 @@ class CreateSession extends Component {
     return (
       <div>
         <div>
-        <h3>Enter your email.</h3>
+        <h3>Log In.</h3>
           <label>Email</label>
           <input type="text"
             value={this.state.user_email}
@@ -38,7 +38,7 @@ class CreateSession extends Component {
         <h3>Enter your password.</h3>
         <div>
           <label>Password</label>
-          <input type="text"
+          <input type="password"
           value={this.state.password}
           onChange={this.onInputChangePassword}/>
         </div>

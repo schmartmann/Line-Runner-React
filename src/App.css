@@ -46,4 +46,8 @@
 
 .alert-hidden {
   display: none;
-};
+}
+
+.alert-show {
+  color: red;
+}

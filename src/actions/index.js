@@ -7,13 +7,21 @@ export const NEW_USER = "NEW_USER";
 export const UPLOAD_SCRIPT = "UPLOAD_SCRIPT";
 export const FETCH_SCRIPT = "FETCH_SCRIPT";
 export const DELETE_SCRIPT = "DELETE_SCRIPT";
-
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const CREATE_FAILURE = "CREATE_FAILURE";
 
 export function createSessionOptimistic(props){
   return {
     type: NEW_SESSION,
     payload: props
   }
+}
+
+export function sessionLoginFailure(){
+    return {
+      type: LOGIN_FAILURE,
+      payload: true
+    }
 }
 
 export function createSession(props){
@@ -31,9 +39,13 @@ export function createSession(props){
         password: password
       }
     }).then(response => {
-      props = response.data.email
-      console.log(props)
-      dispatch(createSessionOptimistic(props));
+      console.log(response)
+      if (response.data === "error!"){
+        dispatch(sessionLoginFailure());
+      } else {
+        props = response.data.email
+        dispatch(createSessionOptimistic(props));
+      }
     }).catch(err => {
       console.log(err)
     });
@@ -44,6 +56,13 @@ export function createUserOptimistic(props){
   return {
     type: NEW_USER,
     payload: props
+  }
+}
+
+export function createUserFailure(){
+  return {
+    type: CREATE_FAILURE,
+    payload: true
   }
 }
 
@@ -61,9 +80,13 @@ export function createUser(props){
         password: password
       }
     }).then(response => {
-      props = response.data.email
-      console.log(props)
-      dispatch(createUserOptimistic(props));
+      console.log(response)
+      if (response.data === "error!"){
+        dispatch(createUserFailure());
+      } else {
+        props = response.data.email
+        dispatch(createUserOptimistic(props));
+      }
     }).catch(err => {
       console.log(err)
     });
