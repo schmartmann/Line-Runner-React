@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:3001'
+// const ROOT_URL = 'http://localhost:3001'
+const ROOT_URL = 'http://947d4bf2.ngrok.io'
 
 export const NEW_SESSION = "NEW_SESSION";
 export const NEW_USER = "NEW_USER";
