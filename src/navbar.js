@@ -15,8 +15,9 @@ class Navbar extends Component {
     }
     this.onInputChangeProject = this.onInputChangeProject.bind(this);
     this.revealUploadForm = this.revealUploadForm.bind(this);
-    this.fetchScripts = this.fetchScripts.bind(this)
-    this.clear = this.clear.bind(this)
+    this.fetchScripts = this.props.fetchScripts.bind(this);
+    this.getScripts = this.getScripts.bind(this);
+    this.clear = this.clear.bind(this);
   }
   revealUploadForm(){
     this.setState({revealUploadForm: true, instructionsDisplay: false})
@@ -27,15 +28,9 @@ class Navbar extends Component {
   clear(){
     this.setState({projectName: ''})
   }
-  fetchScripts(){
+  getScripts(){
     let email = this.props.session.user_email
-    const response = axios({
-      method: 'get',
-      url: `http://localhost:3001/uploads/?${email}`
-      // headers: {'X-Requested-With': 'XMLHttpRequest'},
-    }).then(function(response){
-      console.log(response)
-    })
+    this.fetchScripts(email)
   }
   render(){
     return(
@@ -44,7 +39,7 @@ class Navbar extends Component {
           <button onClick={this.revealUploadForm}>
             Add New Script
           </button>
-          <button onClick={this.fetchScripts}>
+          <button onClick={this.getScripts}>
             Open Saved Script
           </button>
         </div>

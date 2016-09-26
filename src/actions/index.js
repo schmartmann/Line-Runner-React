@@ -7,6 +7,7 @@ export const NEW_USER = "NEW_USER";
 export const END_SESSION = "END_SESSION";
 export const UPLOAD_SCRIPT = "UPLOAD_SCRIPT";
 export const FETCH_SCRIPT = "FETCH_SCRIPT";
+export const FETCH_SCRIPT_ERROR = "FETCH_SCRIPT_ERROR"
 export const DELETE_SCRIPT = "DELETE_SCRIPT";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const CREATE_FAILURE = "CREATE_FAILURE";
@@ -109,22 +110,35 @@ export function fetchScriptsOptimistic(props){
   }
 }
 
+export function fetchScriptsError(props){
+  return {
+    type: FETCH_SCRIPT_ERROR,
+    payload: props
+  }
+}
+
 
 export function fetchScripts(props){
   return function(dispatch){
     console.log(props)
-    let email = props.email;
-    const request = axios.get(`${ROOT_URL}/uploads/return/${email}`)
-    console.log(request)
-    var result = {
-      id:1,
-      user: "stefan",
-      project: "stefan's script",
-      script_line: "listen up fuckos"
+    let email = "props@cool.nice";
+    axios({
+      method: 'get',
+      url: `${ROOT_URL}/uploads?${email}`,
+      headers: {'X-Requested-With': 'XMLHttpRequest'}
+    }).then(response => {
+      if (response.data[0].length === 0){
+        console.log("its blank -_-")
+        let lines = "It doesn't look like you have any scripts uploaded yet."
+        dispatch(fetchScriptsError(lines))
+      } else {
+        console.log(response.data[0])
+        let lines = response.data[0]
+        dispatch(fetchScriptsOptimistic(lines))
+        };
+      }).catch(err => {
+        console.log(err)
+      });
+      return null;
     }
-    // for (var i = 0; i < request.length; i++){
-      dispatch(fetchScriptsOptimistic(result))
-    // }
-    return null;
   }
-}

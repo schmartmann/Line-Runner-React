@@ -25,7 +25,7 @@ class ScriptLine extends Component {
           <input className="script-text"
           onClick={this.vocalize.bind(this)}
           key={this.lines.id}
-          value={this.lines.line[0]}
+          value={this.props.lines.line[0]}
           type="button"/>
         </div>
       )
