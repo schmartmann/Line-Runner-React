@@ -44,6 +44,7 @@ export function createSession(props){
       method: 'post',
       url: `${ROOT_URL}/sessions/create`,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
+      crossDomain: true,
       data: {
         email: email,
         password: password
@@ -85,6 +86,7 @@ export function createUser(props){
       method: 'post',
       url: `${ROOT_URL}/users/create`,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
+      crossDomain: true,
       data: {
         email: email,
         password: password
@@ -126,6 +128,7 @@ export function fetchScripts(props){
     axios({
       method: 'get',
       url: `${ROOT_URL}/uploads?${email}`,
+      crossDomain: true, 
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     }).then(response => {
       if (response.data[0].length === 0){
