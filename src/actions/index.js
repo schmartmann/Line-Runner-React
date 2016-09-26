@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const ROOT_URL = 'http://localhost:3001'
-const ROOT_URL = 'http://cecf3040.ngrok.io'
+const ROOT_URL = 'https://cecf3040.ngrok.io'
 
 export const NEW_SESSION = "NEW_SESSION";
 export const NEW_USER = "NEW_USER";
@@ -128,7 +128,7 @@ export function fetchScripts(props){
     axios({
       method: 'get',
       url: `${ROOT_URL}/uploads?${email}`,
-      crossDomain: true, 
+      crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     }).then(response => {
       if (response.data[0].length === 0){
