@@ -121,7 +121,7 @@ export function fetchScriptsError(props){
 export function fetchScripts(props){
   return function(dispatch){
     console.log(props)
-    let email = "props@cool.nice";
+    let email = props;
     axios({
       method: 'get',
       url: `${ROOT_URL}/uploads?${email}`,
@@ -136,7 +136,8 @@ export function fetchScripts(props){
         let lines = response.data[0]
         dispatch(fetchScriptsOptimistic(lines))
         };
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log(err)
       });
       return null;

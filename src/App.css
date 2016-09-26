@@ -32,17 +32,25 @@
 .ScriptLine {
   margin: 1em 10em;
   text-align: center;
-  background: beige;
 }
 
 .script-text {
+  margin: 0 auto;
+  width: auto;
+  cursor: pointer;
 }
 
-.script-text {
-  margin: 2px
+.script-text:hover{
+  background: lightskyblue;
+  transition: 1s background;
 }
 
-.text-container {
+.playhead {
+  background: red;
+}
+
+.ontainer {
+
 }
 
 .alert-hidden {
@@ -184,4 +192,39 @@
   background: white;
   color: black;
   cursor: pointer;
+}
+
+.play-controller {
+  margin: 20px 0px;
+  width:  auto;
+}
+
+.play-controller button{
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  text-transform:capitalize;
+  border: 0.25px solid lightgrey;
+  margin: 0em 1em;
+  background: black;
+  color: white;
+}
+
+.play-controller button:hover{
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+.text-container{
+  border: 2px solid black;
+  padding: 5px;
+  margin: 0 auto;
+  width: 27em;
+  text-align: left;
+  overflow: scroll;
+}
+
+.text-container p {
+  padding: 2px;
 }

@@ -11,9 +11,6 @@ function mapStateToProps(state){
 
 
 class UserAuthentication extends Component {
-  constructor(props){
-    super(props)
-  }
   render(){
     return(
       <div>

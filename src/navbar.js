@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchScripts } from './actions/index';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
 
 class Navbar extends Component {
   constructor(props){
@@ -29,6 +28,7 @@ class Navbar extends Component {
     this.setState({projectName: ''})
   }
   getScripts(){
+    this.setState({instructionsDisplay: false})
     let email = this.props.session.user_email
     this.fetchScripts(email)
   }
