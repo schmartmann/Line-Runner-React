@@ -35,14 +35,14 @@ class CreateSession extends Component {
             value={this.state.user_email}
             onChange={this.onInputChangeEmail}/>
         </div>
-        <h3>Enter your password.</h3>
+        <br/>
         <div>
           <label>Password</label>
           <input type="password"
           value={this.state.password}
           onChange={this.onInputChangePassword}/>
         </div>
-        <button type="submit" onClick={this.onSubmit} className="btn btn-primary">Submit</button>
+        <button type="submit" onClick={this.onSubmit} className="auth-col-button">Submit</button>
       </div>
     )
   }

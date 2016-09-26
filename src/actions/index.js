@@ -4,6 +4,7 @@ const ROOT_URL = 'http://localhost:3001'
 
 export const NEW_SESSION = "NEW_SESSION";
 export const NEW_USER = "NEW_USER";
+export const END_SESSION = "END_SESSION";
 export const UPLOAD_SCRIPT = "UPLOAD_SCRIPT";
 export const FETCH_SCRIPT = "FETCH_SCRIPT";
 export const DELETE_SCRIPT = "DELETE_SCRIPT";
@@ -22,6 +23,13 @@ export function sessionLoginFailure(){
       type: LOGIN_FAILURE,
       payload: true
     }
+}
+
+export function logOut(){
+  return {
+    type: END_SESSION,
+    payload: undefined
+  }
 }
 
 export function createSession(props){
@@ -90,6 +98,33 @@ export function createUser(props){
     }).catch(err => {
       console.log(err)
     });
+    return null;
+  }
+}
+
+export function fetchScriptsOptimistic(props){
+  return {
+    type: FETCH_SCRIPT,
+    payload: props
+  }
+}
+
+
+export function fetchScripts(props){
+  return function(dispatch){
+    console.log(props)
+    let email = props.email;
+    const request = axios.get(`${ROOT_URL}/uploads/return/${email}`)
+    console.log(request)
+    var result = {
+      id:1,
+      user: "stefan",
+      project: "stefan's script",
+      script_line: "listen up fuckos"
+    }
+    // for (var i = 0; i < request.length; i++){
+      dispatch(fetchScriptsOptimistic(result))
+    // }
     return null;
   }
 }

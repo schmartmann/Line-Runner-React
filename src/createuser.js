@@ -45,14 +45,14 @@ class CreateUser extends Component {
             value={this.state.user_email}
             onChange={this.onInputChangeEmail}/>
         </div>
-        <h3>Select A Password.</h3>
+        <br/>
         <div>
           <label>Password</label>
           <input type="password"
           value={this.state.password}
           onChange={this.onInputChangePassword}/>
         </div>
-        <button type="submit" onClick={this.onSubmit} className="btn btn-primary">Submit</button>
+        <button type="submit" onClick={this.onSubmit} className="auth-col-button">Submit</button>
         <p className={this.state.emailWarning? 'alert-show' : "alert-hidden"}>Please enter a valid email address.</p>
         <p className={this.state.passwordWarning? 'alert-show' : "alert-hidden"}>Please enter a valid password.</p>
       </div>

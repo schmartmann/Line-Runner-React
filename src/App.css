@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #fffcf7;
 }
 
 .App-logo {
@@ -50,4 +51,137 @@
 
 .alert-show {
   color: red;
+}
+
+.upload-form-hide {
+  display: none;
+}
+
+.upload-form-reveal {
+  transition: display 2s;
+}
+
+.instructions-hide {
+  display: none;
+}
+
+.nav-items h2 {
+  font-size: 30px;
+  float: left;
+  display: inline;
+  margin-top: -20px;
+}
+
+.nav-items li {
+  list-style: none;
+  font-size: 12px;
+  display: inline;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.log-out {
+  border: 1px solid white;
+}
+
+.log-out:hover {
+  background: white;
+  color: black;
+  cursor: pointer
+}
+
+.nav-items ul {
+  margin: 50px -100px 10px 0px;
+}
+
+#auth-parent{
+  display: flex;
+}
+
+#auth-col-left {
+  width: 300px;
+  height: 300px;
+  margin-left: 250px;
+  margin-right: 30px;
+  border: 0.25px solid darkgrey;
+  background: lightgrey;
+}
+
+#auth-col-left input, label {
+  margin-left: 10px;
+}
+#auth-col-right input, label {
+  margin-left: 10px;
+}
+
+.auth-col-button {
+  margin-top: 20px;
+  width: 100px;
+  text-transform: uppercase;
+  border: 0.25px solid darkgrey;
+  border-radius: 5px;
+  background: black;
+  color: white;
+}
+
+.auth-col-button:hover{
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+#auth-col-right {
+  width: 300px;
+  border: 0.25px solid darkgrey;
+  background: lightgrey;
+}
+
+#upload-form {
+  margin: 1em 20em;
+  border: 1px solid lightgrey;
+  width: 30em;
+  height: 15em;
+}
+
+#upload-form input {
+  display: block;
+  margin: 2em 15em;
+}
+
+.button-bar {
+  margin: 20px 0px;
+}
+
+.button-bar button {
+  margin: 0px 10px;
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  text-transform:capitalize;
+  border: 0.25px solid lightgrey;
+  background: black;
+  color: white;
+}
+
+.button-bar button:hover{
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+#upload-name, #upload-submit, #upload-file {
+  border-radius: 4px;
+  height: 30px;
+  width: 200px;
+}
+
+#upload-submit {
+  background: black;
+  color: white;
+}
+
+#upload-submit:hover {
+  background: white;
+  color: black;
+  cursor: pointer;
 }

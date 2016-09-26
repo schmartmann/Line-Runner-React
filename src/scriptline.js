@@ -10,7 +10,6 @@ function mapStateToProps(state){
 class ScriptLine extends Component {
   constructor(props){
     super(props);
-    console.log(this.props)
     this.session = this.props.session.user_email;
     this.lines = this.props.lines
     this.vocalize = this.vocalize.bind(this)
@@ -19,17 +18,18 @@ class ScriptLine extends Component {
     console.log(this.lines)
   }
   renderList(){
-    return this.lines.map((line) => {
+    // return this.lines.map((line) => {
       return (
         <div className="text-container">
+          {console.log(this.props)}
           <input className="script-text"
           onClick={this.vocalize.bind(this)}
-          key={line.id}
-          value={line.script_line}
+          key={this.lines.id}
+          value={this.lines.line[0]}
           type="button"/>
         </div>
       )
-    })
+    // })
   }
   render(){
     return(

@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  user_email: undefined,
+  user_email: "stefan@email.com",
   loginFailure: false,
   createAccountFailure: false
 };
@@ -16,7 +16,7 @@ export default function(state = INITIAL_STATE, action){
     case 'CREATE_FAILURE':
       return {createAccountFailure: action.payload}
     case 'END_SESSION':
-      return { user_email: undefined}
+      return { user_email: action.payload}
     default:
       console.log("no session")
       return state;
