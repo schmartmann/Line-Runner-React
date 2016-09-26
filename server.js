@@ -73,5 +73,7 @@ app.post('/api/comments', function(req, res) {
 
 
 app.listen(app.get('port'), function() {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log('Server started: http://localhost:' + app.get('port') + '/');
 });
