@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  user_email: "stefan@email.com",
+  user_email: undefined,
   loginFailure: false,
   createAccountFailure: false
 };

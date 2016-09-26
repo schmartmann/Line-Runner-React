@@ -104,13 +104,13 @@
 
 #auth-parent{
   display: flex;
+  margin: 0 25em;
 }
 
 #auth-col-left {
-  width: 300px;
+  width: 350px;
   height: 300px;
-  margin-left: 250px;
-  margin-right: 30px;
+  margin: 0 2em;
   border: 0.25px solid darkgrey;
   background: lightgrey;
 }
@@ -139,7 +139,7 @@
 }
 
 #auth-col-right {
-  width: 300px;
+  width: 350px;
   border: 0.25px solid darkgrey;
   background: lightgrey;
 }

@@ -16,7 +16,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Displaying Lint Output in the Editor](#displaying-lint-output-in-the-editor)
 - [Installing a Dependency](#installing-a-dependency)
 - [Importing a Component](#importing-a-component)
-- [Adding a Stylesheet](#adding-a-stylesheet)
+- [Adding a Stylesheet](#adding-a-stgiylesheet)
 - [Post-Processing CSS](#post-processing-css)
 - [Adding Images and Fonts](#adding-images-and-fonts)
 - [Adding Bootstrap](#adding-bootstrap)
