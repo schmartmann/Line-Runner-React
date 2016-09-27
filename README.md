@@ -37,9 +37,9 @@ A user should be able to have that text be read out loud back to the user.
 A user could be interested in this service because she/he is an actor looking to run lines but lacks a scene partner, someone rehearsing a speech who needs to hear it out loud, someone who is proofreading copy, or someone who finds the halting, alienating tone of an artificial robot voice somehow comforting. 
 
 # Wire Frame
-1. Front end design: ![](https://drive.google.com/file/d/0B4nu4zBJUwG_blEwNEV2aS1Jd2c/view?usp=sharing)
-2. Back End logic part 1: ![](https://drive.google.com/file/d/0B4nu4zBJUwG_Sk92ZmRRaS1fNGc/view?usp=sharing)
-3. Back End logic part 2: ![](https://drive.google.com/file/d/0B4nu4zBJUwG_Z1o0eFB0dDNxem8/view?usp=sharing)
+1. Front end design: ![](http://i.imgur.com/Ly2YkT8.jpg)
+2. Back End logic part 1: ![](http://i.imgur.com/fCxaIFs.jpg)
+3. Back End logic part 2: ![](http://i.imgur.com/FIv09ly.jpg)
 
 
 # Unsolved Problems / Hurdles: 
