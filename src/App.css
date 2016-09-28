@@ -38,6 +38,7 @@
   margin: 0 auto;
   width: auto;
   cursor: pointer;
+  list-style: none;
 }
 
 .script-text:hover{
