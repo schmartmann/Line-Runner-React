@@ -39,6 +39,7 @@
   width: auto;
   cursor: pointer;
   list-style: none;
+  text-align: left;
 }
 
 .script-text:hover{

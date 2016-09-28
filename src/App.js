@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logOut } from './actions/index';
+import { logOut, clearScripts } from './actions/index';
 import { bindActionCreators } from 'redux';
 import UserAuthentication from './userauthentication'
 import LineRunner from './linerunner'
@@ -15,7 +15,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ logOut: logOut}, dispatch)
+  return bindActionCreators({
+    logOut: logOut,
+    clearScripts: clearScripts
+  }, dispatch)
 }
 
 class App extends Component {
@@ -25,6 +28,7 @@ class App extends Component {
   }
   logOut(){
     this.props.logOut()
+    this.props.clearScripts()
   }
   render() {
       if (!this.props.session.user_email) {

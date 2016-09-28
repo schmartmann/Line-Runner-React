@@ -8,7 +8,8 @@ export const NEW_USER = "NEW_USER";
 export const END_SESSION = "END_SESSION";
 export const UPLOAD_SCRIPT = "UPLOAD_SCRIPT";
 export const FETCH_SCRIPT = "FETCH_SCRIPT";
-export const FETCH_SCRIPT_ERROR = "FETCH_SCRIPT_ERROR"
+export const FETCH_SCRIPT_ERROR = "FETCH_SCRIPT_ERROR";
+export const CLEAR_SCRIPTS = "CLEAR_SCRIPTS";
 export const DELETE_SCRIPT = "DELETE_SCRIPT";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const CREATE_FAILURE = "CREATE_FAILURE";
@@ -145,5 +146,12 @@ export function fetchScripts(props){
         console.log(err)
       });
       return null;
+    }
+  }
+
+  export function clearScripts(){
+    return {
+      type: CLEAR_SCRIPTS,
+      payload: "Select 'Add New Script' to get started."
     }
   }

@@ -9,6 +9,8 @@ export default function(state = INITIAL_STATE, action){
     case 'FETCH_SCRIPT_ERROR':
       console.log(action)
       return {line: [action.payload]}
+    case 'CLEAR_SCRIPTS':
+      return {line: [action.payload]}
     default:
       console.log("no lines")
       return state;
