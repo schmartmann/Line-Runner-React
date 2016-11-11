@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-  line: ["Select 'Add New Script' to get started."]
+  projects: [],
+  line: ["Select 'Add New Script' to get started, or 'Open Saved Script' to resume playback."]
 }
 
 export default function(state = INITIAL_STATE, action){
@@ -10,7 +11,17 @@ export default function(state = INITIAL_STATE, action){
       console.log(action)
       return {line: [action.payload]}
     case 'CLEAR_SCRIPTS':
-      return {line: [action.payload]}
+      return {
+        projects: [],
+        line: [action.payload]
+      }
+    case 'FETCH_PROJECTS':
+    console.log("FETCHPROJECTS", action)
+    console.log("FETCHPROJECTS is a ", typeof action.payload)
+      return {
+        projects: action.payload,
+        line: ["Select 'Add New Script' to get started, or 'Open Saved Script' to resume playback."]
+      }
     default:
       console.log("no lines")
       return state;

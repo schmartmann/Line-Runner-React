@@ -230,3 +230,11 @@
 .text-container p {
   padding: 2px;
 }
+
+.saved-projects-bar {
+  display: inline;
+}
+
+.saved-projects-bar-hide {
+  display: none;
+}

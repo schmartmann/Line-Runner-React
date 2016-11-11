@@ -13,6 +13,7 @@ export const CLEAR_SCRIPTS = "CLEAR_SCRIPTS";
 export const DELETE_SCRIPT = "DELETE_SCRIPT";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const CREATE_FAILURE = "CREATE_FAILURE";
+export const FETCH_PROJECTS = "FETCH_PROJECTS";
 
 export function createSessionOptimistic(props){
   return {
@@ -149,9 +150,38 @@ export function fetchScripts(props){
     }
   }
 
-  export function clearScripts(){
-    return {
-      type: CLEAR_SCRIPTS,
-      payload: "Select 'Add New Script' to get started."
-    }
+export function clearScripts(){
+  return {
+    type: CLEAR_SCRIPTS,
+    payload: "Select 'Add New Script' to get started."
   }
+}
+
+
+export function fetchProjectsOptimistic(props){
+  console.log("fetchProjectsOptimistic", props)
+  return {
+    type: FETCH_PROJECTS,
+    payload: props
+  }
+}
+
+export function fetchProjects(props){
+  return function(dispatch){
+    let email = props;
+    axios({
+      method: 'get',
+      url: `${ROOT_URL}/uploads/projects?${email}`,
+      crossDomain: true,
+      headers: {'X-Requested-With': 'XMLHttpRequest'}
+    }).then(response => {
+      let responseArr = response.data
+      let projectsArr = []
+      for (var i = 0; i <responseArr.length; i++){
+        projectsArr.push(responseArr[i].project)
+      }
+      console.log("get request for projects", projectsArr)
+      dispatch(fetchProjectsOptimistic(projectsArr))
+    })
+  }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchScripts } from './actions/index';
+import { fetchScripts, fetchProjects } from './actions/index';
 import { bindActionCreators } from 'redux';
 
 class Navbar extends Component {
@@ -16,6 +16,8 @@ class Navbar extends Component {
     this.revealUploadForm = this.revealUploadForm.bind(this);
     this.fetchScripts = this.props.fetchScripts.bind(this);
     this.getScripts = this.getScripts.bind(this);
+    this.fetchProjects = this.props.fetchProjects.bind(this);
+    this.getProjects = this.getProjects.bind(this);
     this.clear = this.clear.bind(this);
   }
   revealUploadForm(){
@@ -32,6 +34,34 @@ class Navbar extends Component {
     let email = this.props.session.user_email
     this.fetchScripts(email)
   }
+  getProjects(){
+    this.setState({
+      instructionsDisplay: false,
+      revealUploadForm: false,
+      revealSavedScriptsList: true
+    });
+    let props = this.props.session.user_email;
+    this.fetchProjects(props)
+    console.log("navbar", this.props.lines)
+  }
+  projectList(){
+    var projectNames = [];
+    for (var i = 0; i < this.props.lines.line[0].length; i++){
+      lineComponents.push(
+        <li key={this.props.lines.line[0][i].id}
+            className="script-text"
+            data-project={this.props.lines.line[0][i].project}
+            ref={this.props.lines.line[0][i].id}>
+          {this.props.lines.line[0][i].script_line}
+        </li>
+      )
+    };
+    return (
+      <div>
+        {lineComponents}
+      </div>
+    )
+  }
   render(){
     return(
       <div className="Navbar">
@@ -39,7 +69,7 @@ class Navbar extends Component {
           <button onClick={this.revealUploadForm}>
             Add New Script
           </button>
-          <button onClick={this.getScripts}>
+          <button onClick={this.getProjects}>
             Open Saved Script
           </button>
         </div>
@@ -48,6 +78,13 @@ class Navbar extends Component {
           <h4>Or click "Open Saved Script" to resume playback</h4>
           <h4>of a previously saved script.</h4>
         </blockquote>
+        <div id="saved-projects-bar" className={this.revealSavedScriptsList? "saved-projects-bar" : "saved-projects-bar-hide"}>
+          <ul>
+            <li>
+
+            </li>
+          </ul>
+        </div>
         <div id="upload-form" className={this.state.revealUploadForm? "": "upload-form-hide"}>
         <form ref='uploadForm'
             id='uploadForm'
@@ -67,12 +104,16 @@ class Navbar extends Component {
 
 function mapStateToProps(state){
   return {
+    lines: state.lines,
     session: state.session
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ fetchScripts: fetchScripts}, dispatch)
+  return bindActionCreators({
+    fetchScripts: fetchScripts,
+    fetchProjects: fetchProjects
+  }, dispatch)
 }
 
 
