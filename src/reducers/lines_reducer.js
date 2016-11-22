@@ -1,6 +1,19 @@
 const INITIAL_STATE = {
   projects: [],
-  line: ["Select 'Add New Script' to get started, or 'Open Saved Script' to resume playback."]
+  line: [
+    {
+      id: 1,
+      script_line: "Select 'Add New Script' to get started,",
+      project: "Start a New Project",
+      user: null
+    },
+    {
+      id: 2,
+      script_line: "or 'Open Saved Script' to resume playback.",
+      project: "Start a New Project",
+      user: null
+    }
+  ]
 }
 
 export default function(state = INITIAL_STATE, action){

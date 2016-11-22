@@ -57,3 +57,7 @@ p, ul {
 ul {
   padding-left: 30px;
 }
+
+#auth-parent {
+  margin: 100px 0px;
+}

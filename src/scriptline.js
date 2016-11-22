@@ -20,7 +20,7 @@ class ScriptLine extends Component {
     this.vocalizeResume = this.vocalizeResume.bind(this);
   }
   vocalize(){
-    console.log(this.refs)
+    console.log("asjdfkjasdkl;fjsdl", this.refs)
     this.setState({playBackIsRunning: true})
     for (var ref in this.refs) {
         responsiveVoice.speak(this.refs[ref].innerText, "UK English Female", {pitch: 0.7, rate:1, volume: 0.7});
@@ -35,20 +35,22 @@ class ScriptLine extends Component {
     responsiveVoice.resume();
   }
   renderList(){
+    console.log("this.props.lines.line:",this.props.lines.line)
     var lineComponents = [];
-    for (var i = 0; i < this.props.lines.line[0].length; i++){
+    for (var i = 0; i < this.props.lines.line.length; i++){
       lineComponents.push(
-        <li key={this.props.lines.line[0][i].id}
+        <li key={this.props.lines.line[i].id}
             className="script-text"
-            data-project={this.props.lines.line[0][i].project}
-            ref={this.props.lines.line[0][i].id}>
-          {this.props.lines.line[0][i].script_line}
+            data-project={this.props.lines.line[i].project}
+            ref={this.props.lines.line[i].id}>
+          {this.props.lines.line[i].script_line}
         </li>
       )
+      console.log("contents of lineComponents:", lineComponents)
     };
     return (
       <div>
-        {lineComponents}
+          {lineComponents}
       </div>
     )
   }

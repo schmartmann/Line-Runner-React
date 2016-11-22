@@ -168,6 +168,7 @@ export function fetchProjectsOptimistic(props){
 
 export function fetchProjects(props){
   return function(dispatch){
+    console.log("props", this.props)
     let email = props;
     axios({
       method: 'get',

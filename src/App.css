@@ -105,16 +105,19 @@
 }
 
 #auth-parent{
-  display: flex;
-  margin: 0 25em;
+  margin: 0 24em;
 }
 
 #auth-col-left {
   width: 350px;
-  height: 300px;
-  margin: 0 2em;
+  height: 200px;
+  /*margin: 0 2em;*/
   border: 0.25px solid darkgrey;
   background: lightgrey;
+}
+
+#auth-col-right {
+  height: 200px; 
 }
 
 #auth-col-left input, label {
