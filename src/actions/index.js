@@ -172,7 +172,7 @@ export function fetchProjects(props){
     let email = props;
     axios({
       method: 'get',
-      url: `${ROOT_URL}/uploads/projects?${email}`,
+      url: `${ROOT_URL}/projects?${email}`,
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     }).then(response => {

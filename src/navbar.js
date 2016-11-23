@@ -69,7 +69,7 @@ class Navbar extends Component {
           <button onClick={this.revealUploadForm}>
             Add New Script
           </button>
-          <button onClick={this.getProjects}>
+          <button onClick={this.getScripts}>
             Open Saved Script
           </button>
         </div>

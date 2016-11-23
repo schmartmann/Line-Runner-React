@@ -35,15 +35,15 @@ class ScriptLine extends Component {
     responsiveVoice.resume();
   }
   renderList(){
-    console.log("this.props.lines.line:",this.props.lines.line)
+    console.log("this.props.lines.line[0]:",this.props.lines.line[0])
     var lineComponents = [];
-    for (var i = 0; i < this.props.lines.line.length; i++){
+    for (var i = 0; i < this.props.lines.line[0].length; i++){
       lineComponents.push(
-        <li key={this.props.lines.line[i].id}
+        <li key={this.props.lines.line[0][i].id}
             className="script-text"
-            data-project={this.props.lines.line[i].project}
-            ref={this.props.lines.line[i].id}>
-          {this.props.lines.line[i].script_line}
+            data-project={this.props.lines.line[0][i].project}
+            ref={this.props.lines.line[0][i].id}>
+          {this.props.lines.line[0][i].script_line}
         </li>
       )
       console.log("contents of lineComponents:", lineComponents)
