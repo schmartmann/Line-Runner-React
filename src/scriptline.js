@@ -7,6 +7,11 @@ function mapStateToProps(state){
     lines: state.lines
   }
 };
+
+// i need this button to open a modal screen or something like that
+// that lists the projects
+// and then each project will send a dispatch
+// that grabs the script_lines associated with that project.
 class ScriptLine extends Component {
   constructor(props){
     super(props);
@@ -20,7 +25,6 @@ class ScriptLine extends Component {
     this.vocalizeResume = this.vocalizeResume.bind(this);
   }
   vocalize(){
-    console.log("asjdfkjasdkl;fjsdl", this.refs)
     this.setState({playBackIsRunning: true})
     for (var ref in this.refs) {
         responsiveVoice.speak(this.refs[ref].innerText, "UK English Female", {pitch: 0.7, rate:1, volume: 0.7});
@@ -35,7 +39,7 @@ class ScriptLine extends Component {
     responsiveVoice.resume();
   }
   renderList(){
-    console.log("this.props.lines.line[0]:",this.props.lines.line[0])
+    // console.log("this.props.lines.line[0]:",this.props.lines.line[0])
     var lineComponents = [];
     for (var i = 0; i < this.props.lines.line[0].length; i++){
       lineComponents.push(
@@ -46,8 +50,8 @@ class ScriptLine extends Component {
           {this.props.lines.line[0][i].script_line}
         </li>
       )
-      console.log("contents of lineComponents:", lineComponents)
     };
+    console.log("contents of lineComponents:", lineComponents)
     return (
       <div>
           {lineComponents}
@@ -72,7 +76,5 @@ class ScriptLine extends Component {
     )
   }
 }
-
-
 
 export default connect(mapStateToProps)(ScriptLine);

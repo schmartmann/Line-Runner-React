@@ -15,7 +15,7 @@ class Navbar extends Component {
     this.onInputChangeProject = this.onInputChangeProject.bind(this);
     this.revealUploadForm = this.revealUploadForm.bind(this);
     this.fetchScripts = this.props.fetchScripts.bind(this);
-    this.getScripts = this.getScripts.bind(this);
+    this.openScripts = this.openScripts.bind(this);
     this.fetchProjects = this.props.fetchProjects.bind(this);
     this.getProjects = this.getProjects.bind(this);
     this.clear = this.clear.bind(this);
@@ -29,36 +29,37 @@ class Navbar extends Component {
   clear(){
     this.setState({projectName: ''})
   }
-  getScripts(){
+  openScripts(){
     this.setState({instructionsDisplay: false})
     let email = this.props.session.user_email
     this.fetchScripts(email)
   }
   getProjects(){
+    console.log("navbar", this.props.lines)
     this.setState({
       instructionsDisplay: false,
       revealUploadForm: false,
       revealSavedScriptsList: true
     });
     let props = this.props.session.user_email;
-    this.fetchProjects(props)
-    console.log("navbar", this.props.lines)
+    this.fetchProjects(props);
+    this.projectList()
   }
   projectList(){
     var projectNames = [];
-    for (var i = 0; i < this.props.lines.line[0].length; i++){
-      lineComponents.push(
-        <li key={this.props.lines.line[0][i].id}
-            className="script-text"
-            data-project={this.props.lines.line[0][i].project}
-            ref={this.props.lines.line[0][i].id}>
-          {this.props.lines.line[0][i].script_line}
+    console.log("projectList props.lines contents:", this.props.lines.projects)
+    for (var i = 0; i < this.props.lines.projects.length; i++){
+      projectNames.push(
+        <li key={i}
+            className="script-text">
+          {this.props.lines.projects[i]}
         </li>
       )
     };
+    console.log("projectNames contents:", projectNames)
     return (
       <div>
-        {lineComponents}
+          {projectNames}
       </div>
     )
   }
@@ -69,7 +70,7 @@ class Navbar extends Component {
           <button onClick={this.revealUploadForm}>
             Add New Script
           </button>
-          <button onClick={this.getScripts}>
+          <button onClick={this.getProjects}>
             Open Saved Script
           </button>
         </div>
@@ -78,12 +79,8 @@ class Navbar extends Component {
           <h4>Or click "Open Saved Script" to resume playback</h4>
           <h4>of a previously saved script.</h4>
         </blockquote>
-        <div id="saved-projects-bar" className={this.revealSavedScriptsList? "saved-projects-bar" : "saved-projects-bar-hide"}>
-          <ul>
-            <li>
-
-            </li>
-          </ul>
+        <div id="saved-projects-bar" className={this.revealSavedScriptsList? "saved-projects-bar-hide" : "saved-projects-bar"}>
+          {this.projectList()}
         </div>
         <div id="upload-form" className={this.state.revealUploadForm? "": "upload-form-hide"}>
         <form ref='uploadForm'

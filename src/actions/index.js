@@ -168,11 +168,11 @@ export function fetchProjectsOptimistic(props){
 
 export function fetchProjects(props){
   return function(dispatch){
-    console.log("props", this.props)
+    console.log("props", props)
     let email = props;
     axios({
       method: 'get',
-      url: `${ROOT_URL}/projects?${email}`,
+      url: `${ROOT_URL}/uploads/projects?${email}`,
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     }).then(response => {
