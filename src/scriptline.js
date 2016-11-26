@@ -8,10 +8,6 @@ function mapStateToProps(state){
   }
 };
 
-// i need this button to open a modal screen or something like that
-// that lists the projects
-// and then each project will send a dispatch
-// that grabs the script_lines associated with that project.
 class ScriptLine extends Component {
   constructor(props){
     super(props);
@@ -38,16 +34,19 @@ class ScriptLine extends Component {
     this.setState({playBackIsRunning: true})
     responsiveVoice.resume();
   }
+
+  // TODO: figure out why array sizes aren't standardized between payloads. 
   renderList(){
-    // console.log("this.props.lines.line[0]:",this.props.lines.line[0])
+    console.log("script lines renderList:", this.props.lines.line)
+    console.log("this.props.lines.line.length:", this.props.lines.line.length)
     var lineComponents = [];
-    for (var i = 0; i < this.props.lines.line[0].length; i++){
+    for (var i = 0; i < this.props.lines.line.length; i++){
       lineComponents.push(
-        <li key={this.props.lines.line[0][i].id}
+        <li key={this.props.lines.line[i].id}
             className="script-text"
-            data-project={this.props.lines.line[0][i].project}
-            ref={this.props.lines.line[0][i].id}>
-          {this.props.lines.line[0][i].script_line}
+            data-project={this.props.lines.line[i].project}
+            ref={this.props.lines.line[i].id}>
+          {this.props.lines.line[i].script_line}
         </li>
       )
     };

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const ROOT_URL = 'http://localhost:3001'
-// const ROOT_URL = 'https://cecf3040.ngrok.io'
 
 export const NEW_SESSION = "NEW_SESSION";
 export const NEW_USER = "NEW_USER";
@@ -123,22 +122,22 @@ export function fetchScriptsError(props){
 }
 
 
-export function fetchScripts(props){
+export function fetchScripts(project, email){
   return function(dispatch){
-    console.log(props)
-    let email = props;
+    console.log(project, email)
     axios({
       method: 'get',
-      url: `${ROOT_URL}/uploads?${email}`,
+      url: `${ROOT_URL}/uploads?email=${email}&project=${project}`,
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     }).then(response => {
+      console.log("this is the response:", response.data[0][0])
       if (response.data[0].length === 0){
         console.log("its blank -_-")
         let lines = "It doesn't look like you have any scripts uploaded yet."
         dispatch(fetchScriptsError(lines))
       } else {
-        console.log(response.data[0])
+        console.log("success response:", response.data[0])
         let lines = response.data[0]
         dispatch(fetchScriptsOptimistic(lines))
         };

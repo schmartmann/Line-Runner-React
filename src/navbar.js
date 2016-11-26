@@ -29,10 +29,11 @@ class Navbar extends Component {
   clear(){
     this.setState({projectName: ''})
   }
-  openScripts(){
-    this.setState({instructionsDisplay: false})
+  openScripts(event){
     let email = this.props.session.user_email
-    this.fetchScripts(email)
+    let project = event.target.innerHTML
+    console.log(email, project)
+    this.fetchScripts(project, email)
   }
   getProjects(){
     console.log("navbar", this.props.lines)
@@ -51,6 +52,8 @@ class Navbar extends Component {
     for (var i = 0; i < this.props.lines.projects.length; i++){
       projectNames.push(
         <li key={i}
+            onClick={this.openScripts}
+            ref={this.props.lines.projects[i]}
             className="script-text">
           {this.props.lines.projects[i]}
         </li>
