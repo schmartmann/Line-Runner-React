@@ -19,7 +19,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
     case 'FETCH_SCRIPT':
-      return {line: [action.payload]};
+      return {line: action.payload};
     case 'FETCH_SCRIPT_ERROR':
       console.log(action)
       return {line: [action.payload]}

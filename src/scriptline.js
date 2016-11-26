@@ -35,7 +35,6 @@ class ScriptLine extends Component {
     responsiveVoice.resume();
   }
 
-  // TODO: figure out why array sizes aren't standardized between payloads. 
   renderList(){
     console.log("script lines renderList:", this.props.lines.line)
     console.log("this.props.lines.line.length:", this.props.lines.line.length)

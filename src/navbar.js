@@ -14,6 +14,7 @@ class Navbar extends Component {
     }
     this.onInputChangeProject = this.onInputChangeProject.bind(this);
     this.revealUploadForm = this.revealUploadForm.bind(this);
+    this.hideUploadForm = this.hideUploadForm.bind(this);
     this.fetchScripts = this.props.fetchScripts.bind(this);
     this.openScripts = this.openScripts.bind(this);
     this.fetchProjects = this.props.fetchProjects.bind(this);
@@ -22,6 +23,9 @@ class Navbar extends Component {
   }
   revealUploadForm(){
     this.setState({revealUploadForm: true, instructionsDisplay: false})
+  }
+  hideUploadForm(){
+    this.setState({revealUploadForm: false, instructionsDisplay: false})
   }
   onInputChangeProject(event) {
     this.setState({ projectName: event.target.value});
@@ -34,6 +38,9 @@ class Navbar extends Component {
     let project = event.target.innerHTML
     console.log(email, project)
     this.fetchScripts(project, email)
+    this.setState({
+      revealSavedScriptsList: false
+    });
   }
   getProjects(){
     console.log("navbar", this.props.lines)
@@ -49,16 +56,20 @@ class Navbar extends Component {
   projectList(){
     var projectNames = [];
     console.log("projectList props.lines contents:", this.props.lines.projects)
-    for (var i = 0; i < this.props.lines.projects.length; i++){
-      projectNames.push(
-        <li key={i}
-            onClick={this.openScripts}
-            ref={this.props.lines.projects[i]}
-            className="script-text">
-          {this.props.lines.projects[i]}
-        </li>
-      )
-    };
+    if (this.props.lines.projects === undefined){
+
+    } else {
+      for (var i = 0; i < this.props.lines.projects.length; i++){
+        projectNames.push(
+          <li key={i}
+              onClick={this.openScripts}
+              ref={this.props.lines.projects[i]}
+              className="script-text">
+            {this.props.lines.projects[i]}
+          </li>
+        )
+      };
+    }
     console.log("projectNames contents:", projectNames)
     return (
       <div>
@@ -94,7 +105,7 @@ class Navbar extends Component {
             <input id="upload-name" type="text" name="project" onClick={this.clear} onChange={this.onInputChangeProject} value={this.state.projectName}/>
             <input type="hidden" name="user_email" value={this.props.session.user_email}/>
             <input id="upload-file" type="file" name="upl" />
-            <input id="upload-submit" type='submit' value='Get this read now!' />
+            <input id="upload-submit" type='submit' onClick={this.hideUploadForm} value='Get this read now!' />
         </form>
         </div>
       </div>
